@@ -1,4 +1,4 @@
-package info.latenightbus.latenightbus.entity;
+package info.latenightbus.latenightbus.Entities;
 
 import java.io.Serializable;
 import java.sql.Date;
