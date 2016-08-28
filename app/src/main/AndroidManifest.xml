@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".FahrplanActivity"></activity>
+        <uses-permission android:name="android.permission.INTERNET" />
     </application>
 
 </manifest>
