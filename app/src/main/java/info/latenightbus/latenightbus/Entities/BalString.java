@@ -1,26 +1,19 @@
 package info.latenightbus.latenightbus.Entities;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 /**
- * Created by Paul Thillen on 18.08.2016.
+ * Created by Paul Thillen on 08.09.2016.
  */
-public class Bal implements Serializable, Comparable {
-    final int id;
-    Date datum;
+public class BalString {
+    int id;
+    String datum;
     String name;
     String location;
     String musik;
     String region;
 
-
-    public Bal(int id) {
-        this.id = id;
-    }
-
-
-    public Bal(int id, Date datum, String name, String location, String musik, String region) {
+    public BalString(int id, String datum, String name, String location, String musik, String region) {
         this.id = id;
         this.datum = datum;
         this.name = name;
@@ -29,26 +22,19 @@ public class Bal implements Serializable, Comparable {
         this.region = region;
     }
 
-    @Override
-    public int compareTo(Object another) {
-        Bal other = null;
-        if (another!=null) {
-            other = (Bal) another;
-        } else {
-            return 0;
-        }
-        return this.datum.compareTo(other.datum);
-    }
-
     public int getId() {
         return id;
     }
 
-    public Date getDatum() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDatum() {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(String datum) {
         this.datum = datum;
     }
 
@@ -74,5 +60,13 @@ public class Bal implements Serializable, Comparable {
 
     public void setMusik(String musik) {
         this.musik = musik;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 }
