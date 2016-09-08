@@ -27,7 +27,7 @@ import info.latenightbus.latenightbus.Logic.JSONParser;
 public class FahrplanActivity extends AppCompatActivity {
 
     //URL to get JSON Array
-    private static String url = "http://http://paul.diekirch.org/app/connection.php";
+    private static String url = "http://paul.diekirch.org/app/JSON/index2.json";
     //JSON Node Names
     private static final String TAG_FAHRPLAN = "fahrplan";
     private static final String TAG_ID = "id";
