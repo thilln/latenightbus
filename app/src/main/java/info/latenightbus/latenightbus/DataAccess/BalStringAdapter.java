@@ -42,4 +42,6 @@ public class BalStringAdapter extends ArrayAdapter<BalString> {
         return convertView;
     }
 
+
+
 }

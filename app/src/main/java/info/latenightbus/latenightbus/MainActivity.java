@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(c, FahrplanActivity.class);
-                        intent.putExtra("button_id",0);
+                        intent.putExtra("region",1);
                         startActivity(intent);
                     }
                 }
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(c, FahrplanActivity.class);
-                        intent.putExtra("button_id",1);
+                        intent.putExtra("region",2);
                         startActivity(intent);
                     }
                 }
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(c, FahrplanActivity.class);
-                        intent.putExtra("button_id",2);
+                        intent.putExtra("region",3);
                         startActivity(intent);
                     }
                 }
