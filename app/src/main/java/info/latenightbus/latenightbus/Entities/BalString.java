@@ -13,7 +13,7 @@ public class BalString {
     String musik;
     String region;
 
-    public BalString(int id, String datum, String name, String location, String musik, String region) {
+    public BalString(int id, String name, String datum, String location, String musik, String region) {
         this.id = id;
         this.datum = datum;
         this.name = name;
