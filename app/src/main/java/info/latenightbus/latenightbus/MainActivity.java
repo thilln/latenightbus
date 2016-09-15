@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton ib_nordstad = (ImageButton) findViewById(R.id.button_nordstad);
         ImageButton ib_nordspetzt = (ImageButton) findViewById(R.id.button_nordspetzt);
         ImageButton ib_atert = (ImageButton) findViewById(R.id.button_atert);
-        Button b_all = (Button) findViewById(R.id.button_all);
+        ImageButton ib_all = (ImageButton) findViewById(R.id.button_all);
         final Context c = this;
         //set onClick Listeners
         ib_nordstad.setOnClickListener(
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-        b_all.setOnClickListener(
+        ib_all.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

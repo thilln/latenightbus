@@ -13,9 +13,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wëllkomm an der neier Late Night Bus App. Hei fannt dir all d&apos;Fuerpläng op déi verschidde LNB Baler an d Regiounen Nordstad, Nordspëtzt an Atert. Vill Spaass beim Feieren!"
+        android:text="Wëllkomm an der neier Late Night Bus App. Hei fannt dir all d&apos;Fuerpläng op déi verschidde LNB Baler an de Regiounen Nordstad, Nordspëtzt an Atert. Vill Spaass beim Feieren!"
         android:id="@+id/textView2"
-        android:textSize="16sp"/>
+        android:textSize="18sp"/>
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/tableLayout1"
@@ -68,12 +68,16 @@
             android:contentDescription="@string/logo_atert"
             android:layout_margin="2dp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/button_all"
+                android:src="@drawable/all_baler_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="All Baler" />
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/logo_atert"
+                android:layout_margin="2dp" />
         </TableRow>
 
     </TableLayout>
