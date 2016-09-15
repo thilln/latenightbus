@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,16 +29,30 @@ public class BalStringAdapter extends ArrayAdapter<BalString> {
         BalString bal = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.bal_list_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
         // Lookup view for data population
         TextView tvName = (TextView) convertView.findViewById(R.id.name);
         TextView tvDatum = (TextView) convertView.findViewById(R.id.datum);
         TextView tvPlatz = (TextView) convertView.findViewById(R.id.platz);
+        ImageView ivLogo = (ImageView) convertView.findViewById(R.id.imageView);
         // Populate the data into the template view using the data object
         tvName.setText(bal.getName());
-        tvDatum.setText(bal.getDatum());
+        tvDatum.setText(bal.writeDatum());
         tvPlatz.setText(bal.getLocation());
+        switch (bal.getRegion()) {
+            case "nordspetzt":
+                ivLogo.setImageResource(R.drawable.logo_nordspetzt);
+                break;
+            case "atert":
+                ivLogo.setImageResource(R.drawable.logo_atert);
+                break;
+            case "nordstad":
+                ivLogo.setImageResource(R.drawable.logo_nordstad);
+                break;
+            default:
+                break;
+        }
         // Return the completed view to render on screen
         return convertView;
     }
