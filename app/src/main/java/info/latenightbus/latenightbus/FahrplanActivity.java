@@ -35,10 +35,10 @@ public class FahrplanActivity extends AppCompatActivity {
 
 
     //URL to get JSON Array
-    private static String all = "http://beta.latenightbus.org/app/all.php";
-    private static String nordstad = "http://beta.latenightbus.org/app/nordstad.php";
-    private static String nordspetzt = "http://beta.latenightbus.org/app/nordspetzt.php";
-    private static String atert = "http://beta.latenightbus.org/app/atert.php";
+    private static String all = "http://latenightbus.info/app/all.php";
+    private static String nordstad = "http://latenightbus.info/app/nordstad.php";
+    private static String nordspetzt = "http://latenightbus.info/app/nordspetzt.php";
+    private static String atert = "http://latenightbus.info/app/atert.php";
 
     //JSON Node Names
     private static final String TAG_FAHRPLAN = "fahrplan";

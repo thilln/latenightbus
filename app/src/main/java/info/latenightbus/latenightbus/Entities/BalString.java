@@ -72,7 +72,7 @@ public class BalString {
     }
 
     public String writeDatum() {
-        String dach = /*translateLUX(*/new SimpleDateFormat("EEEE").format(datum)+", ";
+        String dach = new SimpleDateFormat("EEEE").format(datum)+", ";
         String teil2 = new SimpleDateFormat("d.M.yy").format(datum);
         return dach+teil2;
     }
