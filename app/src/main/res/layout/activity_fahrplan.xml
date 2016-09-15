@@ -17,10 +17,18 @@
         android:text="Busfuerpläng"
         android:id="@+id/iwwerschreftFahrplan" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wann dir op en Bal dréckt, gëtt de jeeweilege Fuerplang automatesch erofgelueden."
+        android:id="@+id/textView"
+        android:layout_margin="4dp" />
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fahrplanListView"
         android:layout_weight="1"
         android:visibility="visible" />
+
 </LinearLayout>

@@ -35,10 +35,10 @@ public class FahrplanActivity extends AppCompatActivity {
 
 
     //URL to get JSON Array
-    private static String all = "http://paul.diekirch.org/app/JSON/connection.php";
-    private static String nordstad = "http://paul.diekirch.org/app/JSON/nordstad.php";
-    private static String nordspetzt = "http://paul.diekirch.org/app/JSON/nordspetzt.php";
-    private static String atert = "http://paul.diekirch.org/app/JSON/atert.php";
+    private static String all = "http://beta.latenightbus.org/app/all.php";
+    private static String nordstad = "http://beta.latenightbus.org/app/nordstad.php";
+    private static String nordspetzt = "http://beta.latenightbus.org/app/nordspetzt.php";
+    private static String atert = "http://beta.latenightbus.org/app/atert.php";
 
     //JSON Node Names
     private static final String TAG_FAHRPLAN = "fahrplan";
@@ -53,6 +53,8 @@ public class FahrplanActivity extends AppCompatActivity {
     public static final int NORDSTAD_ID = 1;
     public static final int NORDSPETZT_ID = 2;
     public static final int ATERT_ID = 3;
+
+    public static final DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     JSONArray fahrplan = null;
     ArrayList<BalString> baler = new ArrayList<>();
@@ -89,20 +91,24 @@ public class FahrplanActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int clicked_id = baler.get(position).getId();
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://paul.diekirch.org/wp-content/uploads/"
-                        +clicked_id+".pdf"));
-                startActivity(browserIntent);
+                Date balDate = null;
+                BalString mBal = baler.get(position);
+                balDate = mBal.getDatum();
+                Date today = new Date();
+                if (balDate.getTime()-14*24*60*60*1000< today.getTime()) {
+                    int clicked_id = baler.get(position).getId();
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://paul.diekirch.org/wp-content/uploads/"
+                            + clicked_id + ".pdf"));
+                    startActivity(browserIntent);
+                } else {
+                    Toast.makeText(getApplicationContext(),"D'Fuerpläng fir ee Bal ginn ëmmer réicht " +
+                            "2 Woche virdrun online gesat.",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     protected void processJson(JSONObject json) {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         try {
             // Getting JSON Array
             fahrplan = json.getJSONArray(TAG_FAHRPLAN);
@@ -113,14 +119,11 @@ public class FahrplanActivity extends AppCompatActivity {
                 int id = Integer.parseInt(c.getString(TAG_ID));
                 String name = c.getString(TAG_NAME);
                 String datum = c.getString(TAG_DATUM);
-
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 Date d = df.parse(datum);
-                datum = new SimpleDateFormat("d.M").format(d);
                 String platz = c.getString(TAG_PLATZ);
                 String musik = c.getString(TAG_MUSIK);
                 String region = c.getString(TAG_REGION);
-                BalString b = new BalString(id, name, datum, platz, musik, region);
+                BalString b = new BalString(id, name, d, platz, musik, region);
                 baler.add(b);
             }
 

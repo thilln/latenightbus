@@ -10,52 +10,72 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="info.latenightbus.latenightbus.MainActivity">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wëllkomm an der neier Late Night Bus App. Hei fannt dir all d&apos;Fuerpläng op déi verschidde LNB Baler an d Regiounen Nordstad, Nordspëtzt an Atert. Vill Spaass beim Feieren!"
+        android:id="@+id/textView2"
+        android:textSize="16sp"/>
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tableLayout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content" >
 
-        <ImageButton
-            android:id="@+id/button_nordstad"
-            android:src="@drawable/logo_nordstad"
-            android:layout_width="match_parent"
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/logo_nordstad" />
+            android:layout_weight="1" >
 
-        <ImageButton
-            android:id="@+id/button_nordspetzt"
-            android:src="@drawable/logo_nordspetzt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/logo_nordspetzt" />
+            <ImageButton
+                android:id="@+id/button_nordstad"
+                android:src="@drawable/logo_nordstad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/logo_nordstad"
+                android:layout_margin="2dp" />
 
-        <ImageButton
+            <ImageButton
+                android:id="@+id/button_nordspetzt"
+                android:src="@drawable/logo_nordspetzt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/logo_nordspetzt"
+                android:layout_margin="2dp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <ImageButton
             android:id="@+id/button_atert"
             android:src="@drawable/logo_atert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+                android:layout_weight="1"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/logo_atert" />
-    </LinearLayout>
+            android:contentDescription="@string/logo_atert"
+            android:layout_margin="2dp" />
+
+            <Button
+                android:id="@+id/button_all"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="All Baler" />
+        </TableRow>
+
+    </TableLayout>
 
 </LinearLayout>
