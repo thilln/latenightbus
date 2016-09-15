@@ -60,53 +60,43 @@ public class FahrplanActivity extends AppCompatActivity {
     ArrayList<BalString> baler = new ArrayList<>();
     int mRegion = ALL_ID;
 
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fahrplan);
         Bundle b = this.getIntent().getExtras();
         mRegion = b.getInt("region");
-        JSONObject json = null;
-        try {
-            json= new JSONParse().execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        processJson(json);
-        BalStringAdapter bsa = new BalStringAdapter(this, baler);
-        ListView listView = (ListView) findViewById(R.id.fahrplanListView);
-        listView.setAdapter(bsa);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Date balDate = null;
-                BalString mBal = baler.get(position);
-                balDate = mBal.getDatum();
-                Date today = new Date();
-                if (balDate.getTime()-14*24*60*60*1000< today.getTime()) {
-                    int clicked_id = baler.get(position).getId();
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://paul.diekirch.org/wp-content/uploads/"
-                            + clicked_id + ".pdf"));
-                    startActivity(browserIntent);
-                } else {
-                    Toast.makeText(getApplicationContext(),"D'Fuerpläng fir ee Bal ginn ëmmer réicht " +
-                            "2 Woche virdrun online gesat.",Toast.LENGTH_SHORT).show();
-                }
+            JSONObject json = null;
+            try {
+                json = new JSONParse().execute().get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
             }
-        });
-    }
+            processJson(json);
+            BalStringAdapter bsa = new BalStringAdapter(this, baler);
+            ListView listView = (ListView) findViewById(R.id.fahrplanListView);
+            listView.setAdapter(bsa);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Date balDate = null;
+                    BalString mBal = baler.get(position);
+                    balDate = mBal.getDatum();
+                    Date today = new Date();
+                    if (balDate.getTime() - 14 * 24 * 60 * 60 * 1000 < today.getTime()) {
+                        int clicked_id = baler.get(position).getId();
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://paul.diekirch.org/wp-content/uploads/"
+                                + clicked_id + ".pdf"));
+                        startActivity(browserIntent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "D'Fuerpläng fir ee Bal ginn ëmmer réicht " +
+                                "2 Woche virdrun online gesat.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
 
     protected void processJson(JSONObject json) {
         try {
